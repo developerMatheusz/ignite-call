@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormAnnotation } from "./styles";
 import { useRouter } from "next/router";
 
-//regex é uma expressão regular que permite somente letras de A até Z
 const claimUsernameFormSchema = z.object({
     username: z.string()
         .min(3, { message: "O usuário precisa ter pelo menos 3 letras." })
@@ -18,14 +17,17 @@ type ClaimUsernameFormData = z.infer<typeof claimUsernameFormSchema>;
 
 export function ClaimUsernameForm() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<ClaimUsernameFormData>({
+    const { 
+        register, 
+        handleSubmit, 
+        formState: { errors, isSubmitting } 
+    } = useForm<ClaimUsernameFormData>({
         resolver: zodResolver(claimUsernameFormSchema)
     });
 
     const router = useRouter();
 
-    //Essa função é assíncrona e utiliza o await porque é um método que pode demorar para ser executado. Pois o usuário pode demorar para preencher o formulário.
-    async function handleClaimUsername(data: any) {
+    async function handleClaimUsername(data: ClaimUsernameFormData) {
         
         const { username } = data;
 
@@ -45,7 +47,8 @@ export function ClaimUsernameForm() {
                 />
                 <Button 
                     size="sm" 
-                    type="submit"
+                    type="submit" 
+                    disabled={isSubmitting}
                 >
                     Reservar
                     <ArrowRight/>

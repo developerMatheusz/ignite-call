@@ -8,7 +8,7 @@ export const Container = styled("div", {
     alignItems: "center", 
     gap: "$20"
 });
-//> ${Heading} é um sinal de que o estilo irá se aplicar somente no Heading e não em quem estará dentro dele
+
 export const Hero = styled("div", {
     maxWidth: 480, 
     padding: "0 $10", 
