@@ -11,7 +11,11 @@ interface Availability {
     availableTimes: number[]
 }
 
-export function CalendarStep() {
+interface CalendarStepProps {
+    onSelectedDateTime: (date: Date) => void;
+}
+
+export function CalendarStep({ onSelectedDateTime }: CalendarStepProps) {
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
@@ -21,9 +25,12 @@ export function CalendarStep() {
     const isDateSelected = !!selectedDate;
 
     const weekDay = selectedDate ? dayjs(selectedDate).format("dddd") : null;
+
     const describedDate = selectedDate ? dayjs(selectedDate).format("DD[ de ]MMMM") : null;
+
     const selectedDateWithoutTime = selectedDate ? dayjs(selectedDate).format("YYYY-MM-DD") : null;
 
+    //Hook useQuery só é executado caso selectedDate for modificado !!selectedDate.
     const { data: availability } = useQuery<Availability>(["availability", selectedDateWithoutTime], async () => {
 
         const response = await api.get(`/users/${username}/availability`, {
@@ -32,11 +39,24 @@ export function CalendarStep() {
             }
         });
 
+        console.log(response.data)
+
         return response.data;
 
     }, {
         enabled: !!selectedDate
     });
+
+    function handleSelectTime(hour: number) {
+
+        const dateWithTime = dayjs(selectedDate)
+            .set("hour", hour)
+            .startOf("hour")
+            .toDate();
+
+        onSelectedDateTime(dateWithTime);
+
+    }
 
     return(
 
@@ -44,7 +64,7 @@ export function CalendarStep() {
             <Calendar 
                 selectedDate={selectedDate} 
                 onDateSelected={setSelectedDate}
-            >
+            />
                 {
                     isDateSelected && (
                         <TimePicker>
@@ -58,7 +78,8 @@ export function CalendarStep() {
 
                                             <TimePickerItem 
                                                 key={hour} 
-                                                disabled={!availability.availableTimes.includes(hour)}
+                                                disabled={!availability.availableTimes.includes(hour)} 
+                                                onClick={() => handleSelectTime(hour)}
                                             >
                                                 {String(hour).padStart(2, "0")}:00h
                                             </TimePickerItem>
@@ -70,7 +91,6 @@ export function CalendarStep() {
                         </TimePicker>
                     )
                 }
-            </Calendar>
         </Container>
 
     );
