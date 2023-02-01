@@ -31,10 +31,13 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
     const [currentDate, setCurrentDate] = useState(() => {
         return dayjs().set("date", 1);
     });
-    const currentMonth = currentDate.format("MMM");
+
+    const currentMonth = currentDate.format("MMMM");
     const currentYear = currentDate.format("YYYY");
+
     const shortWeekDays = getWeekDays({ short: true });
     const router = useRouter();
+
     const username = String(router.query.username);
     
     const { data: blockedDates } = useQuery<BlockedDates>(
@@ -54,6 +57,13 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
         }
     );
 
+    //Array de dias da semana [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+
+    //useMemo serve para memorizar funções e somente permitir que uma função seja executada quando realmente for necessária.
+
+    //Serve para evitar que cada atualização boba que a página sofra, o método seja executado e desperdiçado tempo de execução.
+
+    //date é dia do mês, day é dia da semana.
     const calendarWeeks = useMemo(() => {
 
         if (!blockedDates) {
@@ -75,7 +85,6 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
         }).reverse();
 
         const lastDayInCurrentMonth = currentDate.set("date", currentDate.daysInMonth());
-
         const lastWeekDay = lastDayInCurrentMonth.get("day");
 
         const nextMonthFillArray = Array.from({
@@ -86,11 +95,11 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
 
         const calendarDays = [
 
-            ...previousMonthFillArray.map(date => {
+            ...previousMonthFillArray.map((date) => {
                 return { date, disabled: true }
             }), 
 
-            ...daysInMonthArray.map(date => {
+            ...daysInMonthArray.map((date) => {
                 return { 
                     date, 
                     disabled: date
@@ -102,7 +111,7 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
                 }
             }), 
 
-            ...nextMonthFillArray.map(date => {
+            ...nextMonthFillArray.map((date) => {
                 return { date, disabled: true }
             })
 

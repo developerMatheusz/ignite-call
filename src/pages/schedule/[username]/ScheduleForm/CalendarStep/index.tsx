@@ -16,8 +16,10 @@ export function CalendarStep() {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
     const router = useRouter();
-    const isDateSelected = !!selectedDate;
     const username = String(router.query.username);
+
+    const isDateSelected = !!selectedDate;
+
     const weekDay = selectedDate ? dayjs(selectedDate).format("dddd") : null;
     const describedDate = selectedDate ? dayjs(selectedDate).format("DD[ de ]MMMM") : null;
     const selectedDateWithoutTime = selectedDate ? dayjs(selectedDate).format("YYYY-MM-DD") : null;

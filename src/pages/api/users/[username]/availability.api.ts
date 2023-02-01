@@ -16,7 +16,7 @@ export default async function handler(
 
     if (!date) {
         return res.status(400).json({
-            message: "Data não fornecida"
+            message: "Data não fornecida."
         });
     }
 
@@ -37,8 +37,7 @@ export default async function handler(
 
     if (isPastDate) {
         return res.json({
-            possibleTimes: [], 
-            availableTimes: []
+            availability: []
         });
     }
 
@@ -51,14 +50,14 @@ export default async function handler(
 
     if (!userAvailability) {
         return res.json({
-            possibleTimes: [], 
-            availableTimes: []
+            availability: []
         });
     }
 
     const { time_start_in_minutes, time_end_in_minutes } = userAvailability;
     const startHour = time_start_in_minutes / 60;
     const endHour = time_end_in_minutes / 60;
+    
     const possibleTimes = Array.from({
         length: endHour - startHour
     }).map((_, i) => {

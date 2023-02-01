@@ -1,3 +1,4 @@
+import "../lib/dayjs";
 import { queryClient } from "@/lib/react-query";
 import { globalStyles } from "@/styles/global";
 import { QueryClientProvider } from "@tanstack/react-query";
