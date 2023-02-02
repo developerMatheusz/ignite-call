@@ -18,7 +18,10 @@ export function buildNextAuthOptions(
                 clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "", 
                 authorization: {
                     params: {
-                        scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar"
+                        scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar", 
+                        prompt: "consent", 
+                        access_type: "offline", 
+                        response_type: "code"
                     }
                 }, 
                 profile(profile: GoogleProfile) {
