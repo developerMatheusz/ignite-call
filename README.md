@@ -2,7 +2,7 @@
 # App NextJS fullstack
 > Com Prisma ORM
 ## Projeto fullstack com servidor NextJS e adaptador de banco de dados Prisma ORM
-Este projeto trata-se de uma aplicação Web desenvolvida com o framework SSR/SSG NextJS e adaptador de banco de dados Prisma ORM.
+Este projeto trata-se de uma aplicação Web desenvolvida com o framework SSR/SSG NextJS e adaptador de banco de dados Prisma ORM que se conecta com a API do Google Calendar. O objetivo final deste projeto é o usuário fazer login na aplicação via Google e gerenciar os eventos do Google Calendar pelo aplicativo ignite call.
 
 O método de autenticação utilizado no sistema é via protocolo OAuth2 com provedor Google.
 
