@@ -30,7 +30,6 @@ export function CalendarStep({ onSelectedDateTime }: CalendarStepProps) {
 
     const selectedDateWithoutTime = selectedDate ? dayjs(selectedDate).format("YYYY-MM-DD") : null;
 
-    //Hook useQuery só é executado caso selectedDate for modificado !!selectedDate.
     const { data: availability } = useQuery<Availability>(["availability", selectedDateWithoutTime], async () => {
 
         const response = await api.get(`/users/${username}/availability`, {
@@ -38,8 +37,6 @@ export function CalendarStep({ onSelectedDateTime }: CalendarStepProps) {
                 date: selectedDateWithoutTime
             }
         });
-
-        console.log(response.data)
 
         return response.data;
 

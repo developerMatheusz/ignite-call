@@ -54,13 +54,6 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
 
     });
 
-    //Array de dias da semana [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
-
-    //useMemo serve para memorizar funções e somente permitir que uma função seja executada quando realmente for necessária.
-
-    //Serve para evitar que cada atualização boba que a página sofra, o método seja executado e desperdiçado tempo de execução.
-
-    //date é dia do mês, day é dia da semana.
     const calendarWeeks = useMemo(() => {
 
         if (!blockedDates) {
@@ -97,7 +90,7 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
             }), 
 
             ...daysInMonthArray.map((date) => {
-                return { 
+                return {
                     date, 
                     disabled: 
                         date
