@@ -6,36 +6,31 @@ import { ClaimUsernameForm } from "./components/ClaimUsernameForm";
 import { NextSeo } from "next-seo";
 
 export default function Home() {
-  
-  return(
-
+  return (
     <>
-      <NextSeo 
-        title="Descomplique sua agenda | Ignite Call" 
+      <NextSeo
+        title="Descomplique sua agenda | Ignite Call"
         description="Conecte seu calendário e permita que as pessoas marquem agendamentos no seu tempo livre."
       />
       <Container>
         <Hero>
-          <Heading size="4xl">
-            Agendamento descomplicado
-          </Heading>
+          <Heading size="4xl">Agendamento descomplicado</Heading>
           <Text size="xl">
-            Conecte seu calendário e permita que as pessoas marquem agendamentos no seu tempo livre.
+            Conecte seu calendário e permita que as pessoas marquem agendamentos
+            no seu tempo livre.
           </Text>
-          <ClaimUsernameForm/>
+          <ClaimUsernameForm />
         </Hero>
         <Preview>
-          <Image 
-            src={previewImage} 
-            height={400} 
-            quality={100} 
-            priority 
+          <Image
+            src={previewImage}
+            height={400}
+            quality={100}
+            priority
             alt="Calendário simbolizando aplicação em funcionamento"
           />
         </Preview>
       </Container>
     </>
-
-  ); 
-  
+  );
 }

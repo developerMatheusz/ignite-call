@@ -1,7 +1,6 @@
 import { globalCss } from "@ignite-ui/react";
 
 export const globalStyles = globalCss({
-
   "*": {
     boxSizing: "border-box",
     padding: 0,
@@ -12,5 +11,4 @@ export const globalStyles = globalCss({
     color: "$gray100",
     "-webkit-font-smoothing": "antialiased"
   }
-
 });

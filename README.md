@@ -1,9 +1,44 @@
-![Logo do R](https://www.iconfinder.com/icons/9118036/download/png/48)
-# App NextJS fullstack
-> Com Prisma ORM
-## Projeto fullstack com servidor NextJS e adaptador de banco de dados Prisma ORM
-Este projeto trata-se de uma aplicação Web desenvolvida com o framework SSR/SSG NextJS e adaptador de banco de dados Prisma ORM que se conecta com a API do Google Calendar. O objetivo final deste projeto é o usuário fazer login na aplicação via Google e gerenciar os eventos do Google Calendar pelo aplicativo ignite call.
+# Site de agendamento
 
-O método de autenticação utilizado no sistema é via protocolo OAuth2 com provedor Google.
+O projeto do site de agendamento faz parte de um treinamento aplicado pela empresa RocketSeat em que a finalidade é agendar um usuário utilizando o provedor de identidade Google para autenticação e o processo de agendamento pelo Google Calendar
 
-[ATENÇÃO]: É necessário acessar o Google API Console e copiar para as variáveis de ambiente do aplicativo o GOOGLE_CLIENT_ID e GOOGLE_CLIENT_SECRET. Também será essencial criar um segredo da aplicação com NEXTAUTH_SECRET.
+### 📋 Pré-requisitos
+
+NodeJS versão 16.0.0 ou superior:
+
+```
+https://nodejs.org/en
+```
+
+### 🔧 Instalação
+
+Comando para instalar as dependências do projeto:
+
+```
+npm i
+```
+
+Comando para executar o servidor NextJS:
+
+```
+npm run dev
+```
+
+## 🛠️ Construído com
+
+* [NextJS](https://nextjs.org) - O framework react para a Web
+* [NextAuth](https://next-auth.js.org) - Módulo de autenticação do NextJS
+* [NextSEO](https://github.com/garmeeh/next-seo) - Módulo de SEO do NextJS
+* [PrismaORM](https://www.prisma.io) - Framework ORM para NodeJS e TypeScript
+* [DayJS](https://day.js.org/en/) - Biblioteca JavaScript manipuladora de datas
+* [GoogleApis](https://github.com/googleapis/google-api-nodejs-client) - API do Google para autorização e autenticação do usuário
+* [PhosphorReact](https://github.com/phosphor-icons/react) - Biblioteca de ícones para ReactJS
+* [ESLint](https://eslint.org) - Gerente de código de qualidade
+* [Prettier](https://prettier.io) - Usada para formatar código fonte
+
+## 📄 Licença
+
+Este projeto está sob a licença (MIT) - veja o arquivo [LICENSE.md](https://github.com/developerMatheusz/ignite-call/blob/master/LICENSE.md) para detalhes.
+
+---
+Desenvolvido por [Matheus Zanela](https://github.com/developerMatheusz)

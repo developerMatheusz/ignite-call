@@ -2,12 +2,10 @@ import { getCssText } from "@ignite-ui/react";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-
   return (
-    
     <Html lang="pt-br">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -18,16 +16,14 @@ export default function Document() {
           rel="stylesheet"
         />
         <style
-          id="stitches" 
+          id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
         />
       </Head>
       <body>
-        <Main/>
-        <NextScript/>
+        <Main />
+        <NextScript />
       </body>
     </Html>
-    
   );
-
 }
